@@ -16,7 +16,19 @@ import java.util.List;
 public class LargeVacuumEnvExperiments {
 
     public static void main(String[] args) {
-        Agent<VacuumPercept, Action> agent = new ReflexAgentForLargeVacuumEnv();
+        /*
+        Reflex agent:
+        Problem of the simple version: As it does not know where it was or where it came from it is hard to decide where
+        to move. As the agent does not maintain state about where it came from, I decided to just choose a random
+        direction if it could move in both directions which is obviously not the best idea.
+         */
+        //Agent<VacuumPercept, Action> agent = new ReflexAgentForLargeVacuumEnv();
+
+        /*
+        Model-based reflex agent:
+
+         */
+        Agent<VacuumPercept, Action> agent = new ModelBasedReflexAgentForLargeVaccumEnv();
         runExperiment(agent, 8);
     }
 
