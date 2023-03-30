@@ -33,19 +33,7 @@ public class LargeVacuumEnvExperiments {
     }
 
     private static void runExperiment(Agent<? super VacuumPercept, ? extends Action> agent, int fieldSize) {
-        List<String> fields = new ArrayList<>(fieldSize);
-        VacuumEnvironment.LocationState[] states = new VacuumEnvironment.LocationState[fieldSize];
-
-        for(int i = 0; i < fieldSize; i++){
-            fields.add(i, String.valueOf(i));
-            if (Math.random() < 0.5)
-                states[i] = VacuumEnvironment.LocationState.Dirty;
-            else
-                states[i] = VacuumEnvironment.LocationState.Clean;
-        }
-        System.out.println("Fields: " + fields);
-        System.out.println("Initial states: " + Arrays.toString(states));
-        Environment<VacuumPercept, Action> env = new LargeVacuumEnv(fields, states);
+        Environment<VacuumPercept, Action> env = LargeVacuumEnvBuilder.buildLargeVacuumEnv(fieldSize);
         env.addEnvironmentListener(new SimpleEnvironmentView());
         env.addAgent(agent);
 

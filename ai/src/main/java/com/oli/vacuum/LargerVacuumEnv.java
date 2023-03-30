@@ -11,8 +11,8 @@ class LargeVacuumEnv extends VacuumEnvironment {
     public static final String CAN_MOVE_RIGHT = "can move right";
     public static final String CAN_MOVE_LEFT = "can move left";
 
-    LargeVacuumEnv(List<String> locations, LocationState... locationStates) {
-        super(locations, locationStates);
+    LargeVacuumEnv(List<String> locations, VacuumEnvironment.LocationState[] states) {
+        super(locations, states);
     }
 
     @Override

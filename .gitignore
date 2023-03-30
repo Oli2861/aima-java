@@ -8,4 +8,5 @@
 .idea
 *.iml
 
-
+# Ignore build files
+out

@@ -93,7 +93,7 @@ public class ModelBasedReflexAgentForLargeVaccumEnv extends SimpleAgent<VacuumPe
     private static Set<Rule<Action>> getRuleSet() {
         Set<Rule<Action>> rules = new LinkedHashSet<>();
 
-        rules.add(new Rule<>(new EQUALCondition(CURR_LOCATION, Dirty), ACTION_SUCK));
+        rules.add(new Rule<>(new EQUALCondition(CURR_CLEAN_STATE, Dirty), ACTION_SUCK));
 
         EQUALCondition reachedRightBoundCondition = new EQUALCondition(REACHED_RIGHT_BOUND, true);
         EQUALCondition reachedLeftBoundCondition = new EQUALCondition(REACHED_LEFT_BOUND, true);
