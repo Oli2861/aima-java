@@ -4,14 +4,7 @@ import aima.core.agent.Action;
 import aima.core.agent.Agent;
 import aima.core.agent.Environment;
 import aima.core.agent.impl.SimpleEnvironmentView;
-import aima.core.environment.vacuum.ModelBasedReflexVacuumAgent;
-import aima.core.environment.vacuum.ReflexVacuumAgent;
-import aima.core.environment.vacuum.VacuumEnvironment;
 import aima.core.environment.vacuum.VacuumPercept;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class LargeVacuumEnvExperiments {
 
@@ -33,7 +26,7 @@ public class LargeVacuumEnvExperiments {
     }
 
     private static void runExperiment(Agent<? super VacuumPercept, ? extends Action> agent, int fieldSize) {
-        Environment<VacuumPercept, Action> env = LargeVacuumEnvBuilder.buildLargeVacuumEnv(fieldSize);
+        Environment<VacuumPercept, Action> env = LargeVacuumEnv.buildLargeVacuumEnv(fieldSize);
         env.addEnvironmentListener(new SimpleEnvironmentView());
         env.addAgent(agent);
 

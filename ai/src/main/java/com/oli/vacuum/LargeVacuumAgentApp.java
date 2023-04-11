@@ -79,7 +79,7 @@ public class LargeVacuumAgentApp extends IntegrableApplication {
     @Override
     public void initialize() {
         if (taskPaneCtrl.getParamValueIndex(PARAM_ENV) == 0) {
-            env = LargeVacuumEnvBuilder.buildLargeVacuumEnv(8);
+            env = LargeVacuumEnv.buildLargeVacuumEnv(8);
         }
         if (taskPaneCtrl.getParamValueIndex(PARAM_AGENT) == 0) {
             agent = new ModelBasedReflexAgentForLargeVaccumEnv();
