@@ -96,6 +96,10 @@ public class OlisAgent<P, S, A> extends SimpleAgent<P, A> {
         return Optional.ofNullable(action);
     }
 
+    /**
+     * Save the cost to the current state.
+     * @param primedState Primed state s'.
+     */
     private void saveCostToCurrentState(S primedState) {
         // Result [s, a] <- s'
         result.put(state, action, primedState);
@@ -120,12 +124,12 @@ public class OlisAgent<P, S, A> extends SimpleAgent<P, A> {
     private double costFunction(S state, A action, S sNew) {
         if (sNew == null) {
             // Use the estimated cost to the goal state if the cost to the next state is unknown.
-            return h.applyAsDouble(state);
+            return h.applyAsDouble(state) * 1.2;
         } else {
             double cost = onlineSearchProblem.getStepCosts(state, action, sNew) + H.getOrDefault(sNew, Double.MAX_VALUE);
             // Punish moving in the wrong direction
             if (h.applyAsDouble(state) < h.applyAsDouble(sNew)) {
-                cost *= 1.2;
+                cost *= 1.4;
             }
             return cost;
         }
