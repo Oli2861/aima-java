@@ -15,6 +15,7 @@ import aima.gui.fx.views.VacuumEnvironmentViewCtrl;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import main.java.com.oli.vacuum.maze.Vacuum2dAgent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,7 +70,7 @@ public class VacuumAgentApp extends IntegrableApplication {
 
     protected List<Parameter> createParameters() {
         Parameter p1 = new Parameter(PARAM_ENV, "Large vacuum environment", "Maze vacuum environment");
-        Parameter p2 = new Parameter(PARAM_AGENT, "Large vacuum agent", "Maze vacuum agent");
+        Parameter p2 = new Parameter(PARAM_AGENT, "Large vacuum agent", "Oli's vacuum agent");
         return Arrays.asList(p1, p2);
     }
 
@@ -81,12 +82,12 @@ public class VacuumAgentApp extends IntegrableApplication {
         if (taskPaneCtrl.getParamValueIndex(PARAM_ENV) == 0) {
             env = LargeVacuumEnv.buildLargeVacuumEnv(8);
         } else if (taskPaneCtrl.getParamValueIndex(PARAM_ENV) == 1) {
-            env = new MazeVacuumEnvironment(5, 5);
+            env = new MazeVacuumEnvironment(5, 5, 0.4, 0.4);
         }
         if (taskPaneCtrl.getParamValueIndex(PARAM_AGENT) == 0) {
             agent = new ModelBasedReflexAgentForLargeVaccumEnv();
         } else if (taskPaneCtrl.getParamValueIndex(PARAM_AGENT) == 1) {
-            agent = new MazeEnvAgent();
+            agent = new Vacuum2dAgent();
         }
         if (env != null && agent != null) {
             envViewCtrl.initialize(env);
