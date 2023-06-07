@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // VM options (Java>8): --module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
-public class LargeVacuumAgentApp extends IntegrableApplication {
+public class VacuumAgentApp extends IntegrableApplication {
     public static void main(String[] args) {
         launch(args);
     }
@@ -68,8 +68,8 @@ public class LargeVacuumAgentApp extends IntegrableApplication {
     }
 
     protected List<Parameter> createParameters() {
-        Parameter p1 = new Parameter(PARAM_ENV, "Large vacuum environment");
-        Parameter p2 = new Parameter(PARAM_AGENT, "Large vacuum agent");
+        Parameter p1 = new Parameter(PARAM_ENV, "Large vacuum environment", "Maze vacuum environment");
+        Parameter p2 = new Parameter(PARAM_AGENT, "Large vacuum agent", "Maze vacuum agent");
         return Arrays.asList(p1, p2);
     }
 
@@ -80,9 +80,13 @@ public class LargeVacuumAgentApp extends IntegrableApplication {
     public void initialize() {
         if (taskPaneCtrl.getParamValueIndex(PARAM_ENV) == 0) {
             env = LargeVacuumEnv.buildLargeVacuumEnv(8);
+        } else if (taskPaneCtrl.getParamValueIndex(PARAM_ENV) == 1) {
+            env = new MazeVacuumEnvironment(5, 5);
         }
         if (taskPaneCtrl.getParamValueIndex(PARAM_AGENT) == 0) {
             agent = new ModelBasedReflexAgentForLargeVaccumEnv();
+        } else if (taskPaneCtrl.getParamValueIndex(PARAM_AGENT) == 1) {
+            agent = new MazeEnvAgent();
         }
         if (env != null && agent != null) {
             envViewCtrl.initialize(env);

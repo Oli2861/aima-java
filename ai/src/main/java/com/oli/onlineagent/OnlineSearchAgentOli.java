@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
-public class OlisAgent<P, S, A> extends SimpleAgent<P, A> {
+public class OnlineSearchAgentOli<P, S, A> extends SimpleAgent<P, A> {
     private OnlineSearchProblem<S, A> onlineSearchProblem;
     private Function<P, S> perceptToStateFunction;
     /**
@@ -39,7 +39,7 @@ public class OlisAgent<P, S, A> extends SimpleAgent<P, A> {
      * @param perceptToStateFunction Function returning the problem state associated with the given percept.
      * @param heuristicFunction      Heuristic function h(s) estimating the cost of the cheapest path from state s to goal state.
      */
-    public OlisAgent(OnlineSearchProblem<S, A> onlineSearchProblem, Function<P, S> perceptToStateFunction, ToDoubleFunction<S> heuristicFunction) {
+    public OnlineSearchAgentOli(OnlineSearchProblem<S, A> onlineSearchProblem, Function<P, S> perceptToStateFunction, ToDoubleFunction<S> heuristicFunction) {
         this.perceptToStateFunction = perceptToStateFunction;
         this.h = heuristicFunction;
         this.onlineSearchProblem = onlineSearchProblem;

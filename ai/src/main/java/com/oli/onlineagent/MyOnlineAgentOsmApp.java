@@ -54,7 +54,7 @@ public class MyOnlineAgentOsmApp extends OnlineAgentOsmApp {
         else if (strategy == 1)
             agent = new LRTAStarAgent<>(osp, MapFunctions.createPerceptToStateFunction(), heuristic);
         else if (strategy == 2)
-            agent = new OlisAgent<>(osp, MapFunctions.createPerceptToStateFunction(), heuristic);
+            agent = new OnlineSearchAgentOli<>(osp, MapFunctions.createPerceptToStateFunction(), heuristic);
         else
             agent = new RandomWalkAgent<>(osp, MapFunctions.createPerceptToStateFunction());
         return agent;
