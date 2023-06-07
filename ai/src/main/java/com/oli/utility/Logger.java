@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Logger {
     private final String name;
-    private final static LOG_LEVEL logLevel = LOG_LEVEL.DEBUG;
+    private final static LogLevel logLevel = LogLevel.DEBUG;
     private final String debugPrefix = "[DEBUG] ";
     private final String infoPrefix = "[INFO] ";
     private final String warnPrefix = "[WARN] ";
@@ -19,22 +19,22 @@ public class Logger {
     }
 
     public void info(String message) {
-        if (logLevel.level >= LOG_LEVEL.INFO.level)
+        if (logLevel.level >= LogLevel.INFO.level)
             log(infoPrefix, message);
     }
 
     public void debug(String message) {
-        if (logLevel.level >= LOG_LEVEL.DEBUG.level)
+        if (logLevel.level >= LogLevel.DEBUG.level)
             log(debugPrefix, message);
     }
 
     public void warn(String message) {
-        if (logLevel.level >= LOG_LEVEL.WARN.level)
+        if (logLevel.level >= LogLevel.WARN.level)
             log(warnPrefix, message);
     }
 
     public void error(String message) {
-        if (logLevel.level >= LOG_LEVEL.ERROR.level)
+        if (logLevel.level >= LogLevel.ERROR.level)
             log(errorPrefix, message);
     }
 
